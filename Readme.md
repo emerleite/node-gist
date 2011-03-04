@@ -17,10 +17,11 @@ Instalation
 
 Usuage
 ------
-> var gist = require('gist');
-> gist.create('your gist content', function (url) {
->   console.log(url); //prints created gist url
-> });
+    var gist = require('gist');
+
+    gist.create('your gist content', function (url) {
+      console.log(url); //prints created gist url
+    });
 
 Running tests
 -------------
