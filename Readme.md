@@ -18,7 +18,9 @@ Instalation
 Usuage
 ------
 > var gist = require('gist');
-> var newGistURL = gist.create('your gist content');
+> gist.create('your gist content', function (url) {
+>   console.log(url); //prints created gist url
+> });
 
 Running tests
 -------------
