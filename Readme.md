@@ -32,6 +32,11 @@ $ nodeunit test/gist.test.js
 ### Integration
 $ nodeunit test/integration.test.js
 
+### All tests (3 ways)
+$ npm test 
+$ ./run-tests.js
+$ nodeunit test
+
 Note: Integration test creates real gist. Please, be carreful with this test to not flood gist.
 
 To-Do
