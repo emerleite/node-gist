@@ -1,5 +1,4 @@
 var should = require('should')
-  , nock = require('nock')
   , gist = require('../lib/gist');
 
 describe('integration', function() {
