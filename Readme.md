@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/emerleite/node-gist.png)](http://travis-ci.org/emerleite/node-gist)
+
 Node.js Gist client
 ===================
 Gist API client for Node.JS
@@ -9,7 +11,8 @@ Dependencies
 * Node 0.4.x+
 
 ### Development/Tests
-* nodeunit
+* mocha
+ *should.js
 
 Instalation
 -----------
@@ -27,15 +30,15 @@ Running tests
 -------------
 
 ### Unit
-$ nodeunit test/gist.test.js
+$ node_modules/mocha/bin/mocha test/gist.test.js
 
 ### Integration
-$ nodeunit test/integration.test.js
+$ node_modules/mocha/bin/mocha test/integration.test.js
 
 ### All tests (3 ways)
 $ npm test 
-$ ./run-tests.js
-$ nodeunit test
+$ mocha (installed global)
+$ node_modules/mocha/bin/mocha
 
 Note: Integration test creates real gist. Please, be carreful with this test to not flood gist.
 
