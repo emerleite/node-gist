@@ -1,11 +1,14 @@
-var testCase = require('nodeunit').testCase
+var should = require('should')
+  , nock = require('nock')
   , gist = require('../lib/gist');
 
-module.exports = testCase({
-  'should create gist and return the gist url': function(test) {
+describe('integration', function() {
+
+  it('should create gist and return the gist url', function(done) {
     gist.create('teste new gist', function (url) {
-      test.ok(url.match(/^http:\/\/gist\.github\.com\/\d+$/) != null);
-      test.done();
+      url.should.match(/^http:\/\/gist\.github\.com\/\d+$/)
+      done();
     });
-  }
+  });
+
 });
