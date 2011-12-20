@@ -2,12 +2,13 @@
   "name" : "gist",
   "description" : "Gist api client for node.js",
   "keywords" : [ "gist", "github", "api", "package.json" ],
-  "version" : "0.2.0",
+  "version" : "0.2.1",
   "author" : "Emerson Macedo <emerleite@gmail.com>",
   "repository" : { "type" : "git",
                    "url" : "git://github.com/emerleite/node-gist.git" },
   "devDependencies" : {
-    "nodeunit" : "~0.6.2"
+    "mocha" : "0.7.0",
+    "should" : "0.4.2"
   },
   "main": "index",
   "scripts" : {"test" : "./run-tests.js"},
