@@ -1,55 +1,46 @@
-[![Build Status](https://secure.travis-ci.org/emerleite/node-gist.png)](http://travis-ci.org/emerleite/node-gist)
-
 Node.js Gist client
 ===================
-Gist API client for Node.JS
+Gist API v3 client for Node.JS
 
-Dependencies
-------------
-
-### Runtime
-* Node 0.4.x+
-
-### Development/Tests
-* mocha
- *should.js
-
-Instalation
------------
-> npm install gist 
-
-Usuage
+Usage
 ------
-    var gist = require('gist');
+    var gist = require('gist')(validOAuthToken);
+    
+    // get all your gists (or all public if you didnt specify a token)
+    gist.gists(function(err, resp, json) {
+      console.log(err, json)
+    })
+    
+    // get all public gists for some user
+    gist.gists('maxogden', function(err, resp, json) {
+      console.log(err, json)
+    })
+    
+    // get a gist by id
+    gist.gist('2698151', function(err, resp, json) {
+      console.log(err, json)
+    })
 
-    gist.create('your gist content', function (url) {
-      console.log(url); //prints created gist url
-    });
+    // creating a new gist
+    var newGist = {
+      "description": "the description for this gist",
+      "public": false,
+      "files": {
+        "file1.txt": {
+          "content": "String file contents"
+        }
+      }
+    }
+    gist(validOauthToken).create(newGist, function(err, resp, json) {
+      console.log(err, json)
+    })
 
-Running tests
--------------
-
-### Unit
-$ node_modules/mocha/bin/mocha test/gist.test.js
-
-### Integration
-$ node_modules/mocha/bin/mocha test/integration.test.js
-
-### All tests (3 ways)
-$ npm test 
-$ mocha (installed global)
-$ node_modules/mocha/bin/mocha
-
-Note: Integration test creates real gist. Please, be carreful with this test to not flood gist.
-
-To-Do
------
- (<https://github.com/emerleite/node-gist/issues>)
 
 Author
 ------
+* Max Ogden (@maxogden)
 
-* Emerson Macedo (<http://codificando.com/>)
+this library was forked from Emerson Macedo (<http://codificando.com/>) and entirely rewritten
 
 License:
 --------
