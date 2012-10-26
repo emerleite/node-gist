@@ -5,7 +5,7 @@
 
   var gist = require('../')
     , fs = require('fs')
-    , filename = process.argv[2]
+    , filepath = process.argv[2]
     , desc = process.argv[3]
     ;
 
@@ -13,15 +13,17 @@
     console.log('Usage: gist </path/to/file>');
   }
 
-  if (!filename) {
+  if (!filepath) {
     usage();
     return;
   }
 
-  fs.readFile(filename, 'utf8', function (err, data) {
+  fs.readFile(filepath, 'utf8', function (err, data) {
     var meta
-      , name = filename.replace(/.*\//, '')
+      , filename = filepath.replace(/.*\//, '')
       ;
+
+    filename = 'index.js';
 
     if (err) {
       usage();
@@ -29,16 +31,28 @@
     }
 
     meta = {
-        "description": desc
+        "description": desc || ""
       , "public": true
       , "files": {}
     };
-    meta.files[name] = data;
+    meta.files[filename] = { content: data };
 
     gist().create(meta, function (err, resp, json) {
-      //console.log(JSON.stringify(json, null, '  '));
+      if (err) {
+        console.error(err);
+        return;
+      }
+
+      if (json.errors) {
+        console.log('[DEBUG]');
+        console.log(JSON.stringify(meta, null, '  '));
+        console.log('[GIST ERROR]');
+        console.log(JSON.stringify(json, null, '  '));
+        return;
+      }
+
       console.log('[gist]', json.html_url);
-      console.log('[raw]', json.files[name].raw_url);
+      console.log('[raw]', json.files[filename].raw_url);
       console.log('[git]', json.git_push_url);
     });
   });
