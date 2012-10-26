@@ -6,7 +6,8 @@ Gist API v3 client for Node.JS
 
 For use in your modules (adds to package.json automatically)
 
-    npm install -S gist
+    #npm install -S gist # old version
+    npm install -g git://github.com/coolaj86/node-gist.git
 
 For the commandline gist
 
