@@ -23,7 +23,7 @@
       , filename = filepath.replace(/.*\//, '')
       ;
 
-    filename = 'index.js';
+    //filename = 'index.js';
 
     if (err) {
       usage();
