@@ -12,8 +12,8 @@ For use in your modules (adds to package.json automatically)
     # Bleeding Edge
     npm install -S 'git://github.com/coolaj86/node-gist.git'
 
-    # v1.0.0
-    npm install -S 'git://github.com/coolaj86/node-gist.git#v1.0.1'
+    # v1.0.2
+    npm install -S 'git://github.com/coolaj86/node-gist.git#v1.0.2'
 
 For the commandline gist
 
@@ -21,7 +21,7 @@ For the commandline gist
 
     npm install -g 'git://github.com/coolaj86/node-gist.git'
 
-    npm install -g 'git://github.com/coolaj86/node-gist.git#v1.0.1'
+    npm install -g 'git://github.com/coolaj86/node-gist.git#v1.0.2'
 
 ## Usage
 
