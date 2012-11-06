@@ -1,3 +1,5 @@
+### 0.3.0
+- rewrite using the request module
 ### 0.2.0
 - Created a test script to not depend on global nodeunit
 - Ensure Node 0.6.0 compatibility
