@@ -1,58 +1,72 @@
-[![Build Status](https://secure.travis-ci.org/emerleite/node-gist.png)](http://travis-ci.org/emerleite/node-gist)
+## Node.js Gist client
 
-Node.js Gist client
-===================
-Gist API client for Node.JS
+Gist API v3 client for Node.JS
 
-Dependencies
-------------
+## Installation
 
-### Runtime
-* Node 0.4.x+
+For use in your modules (adds to package.json automatically)
 
-### Development/Tests
-* mocha
- *should.js
+    npm install -S gist
 
-Instalation
------------
-> npm install gist 
+For the commandline gist
 
-Usuage
-------
-    var gist = require('gist');
+    npm install -g gist
 
-    gist.create('your gist content', function (url) {
-      console.log(url); //prints created gist url
-    });
+## Usage
 
-Running tests
--------------
+### Commandline
 
-### Unit
-$ node_modules/mocha/bin/mocha test/gist.test.js
+    gist </path/to/file>
 
-### Integration
-$ node_modules/mocha/bin/mocha test/integration.test.js
+    echo "Hello World!" > ./hello.txt
+    gist ./hello.txt
 
-### All tests (3 ways)
-$ npm test 
-$ mocha (installed global)
-$ node_modules/mocha/bin/mocha
+### API
 
-Note: Integration test creates real gist. Please, be carreful with this test to not flood gist.
+  * `gist.gists([username], fn)`
+  * `gist.gist(id, fn)`
+  * `gist([validOauthToken]).create(newGist, fn)`
 
-To-Do
------
- (<https://github.com/emerleite/node-gist/issues>)
+```javascript
+var gist = require('gist')(validOAuthToken);
 
-Author
-------
+// get all your gists (or all public if you didnt specify a token)
+gist.gists(function(err, resp, json) {
+  console.log(err, json)
+})
 
-* Emerson Macedo (<http://codificando.com/>)
+// get all public gists for some user
+gist.gists('maxogden', function(err, resp, json) {
+  console.log(err, json)
+})
 
-License:
---------
+// get a gist by id
+gist.gist('2698151', function(err, resp, json) {
+  console.log(err, json)
+})
+
+// creating a new gist
+var newGist = {
+  "description": "the description for this gist",
+  "public": false,
+  "files": {
+    "file1.txt": {
+      "content": "String file contents"
+    }
+  }
+}
+gist(validOauthToken).create(newGist, function(err, resp, json) {
+  console.log(err, json)
+})
+```
+
+## Author
+
+* Max Ogden (@maxogden)
+
+this library was forked from Emerson Macedo (<http://codificando.com/>) and entirely rewritten
+
+## License
 
 (The MIT License)
 
