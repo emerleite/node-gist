@@ -1,49 +1,72 @@
-Node.js Gist client
-===================
+## Node.js Gist client
+
 Gist API v3 client for Node.JS
 
-Usage
-------
-    var gist = require('gist')(validOAuthToken);
-    
-    // get all your gists (or all public if you didnt specify a token)
-    gist.gists(function(err, resp, json) {
-      console.log(err, json)
-    })
-    
-    // get all public gists for some user
-    gist.gists('maxogden', function(err, resp, json) {
-      console.log(err, json)
-    })
-    
-    // get a gist by id
-    gist.gist('2698151', function(err, resp, json) {
-      console.log(err, json)
-    })
+## Installation
 
-    // creating a new gist
-    var newGist = {
-      "description": "the description for this gist",
-      "public": false,
-      "files": {
-        "file1.txt": {
-          "content": "String file contents"
-        }
-      }
+For use in your modules (adds to package.json automatically)
+
+    npm install -S gist
+
+For the commandline gist
+
+    npm install -g gist
+
+## Usage
+
+### Commandline
+
+    gist </path/to/file>
+
+    echo "Hello World!" > ./hello.txt
+    gist ./hello.txt
+
+### API
+
+  * `gist.gists([username], fn)`
+  * `gist.gist(id, fn)`
+  * `gist([validOauthToken]).create(newGist, fn)`
+
+```javascript
+var gist = require('gist')(validOAuthToken);
+
+// get all your gists (or all public if you didnt specify a token)
+gist.gists(function(err, resp, json) {
+  console.log(err, json)
+})
+
+// get all public gists for some user
+gist.gists('maxogden', function(err, resp, json) {
+  console.log(err, json)
+})
+
+// get a gist by id
+gist.gist('2698151', function(err, resp, json) {
+  console.log(err, json)
+})
+
+// creating a new gist
+var newGist = {
+  "description": "the description for this gist",
+  "public": false,
+  "files": {
+    "file1.txt": {
+      "content": "String file contents"
     }
-    gist(validOauthToken).create(newGist, function(err, resp, json) {
-      console.log(err, json)
-    })
+  }
+}
+gist(validOauthToken).create(newGist, function(err, resp, json) {
+  console.log(err, json)
+})
+```
 
+## Author
 
-Author
-------
 * Max Ogden (@maxogden)
 
 this library was forked from Emerson Macedo (<http://codificando.com/>) and entirely rewritten
 
-License:
---------
+## License
 
 (The MIT License)
 
