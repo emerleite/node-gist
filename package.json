@@ -1,4 +1,4 @@
-{ 
+{
   "name" : "gist",
   "description" : "Gist api client for node.js",
   "keywords" : [ "gist", "github", "api", "package.json" ],
@@ -7,11 +7,10 @@
   "repository" : { "type" : "git",
                    "url" : "git://github.com/emerleite/node-gist.git" },
   "devDependencies" : {
-    "mocha" : "0.7.0",
-    "should" : "0.4.2"
+    "mocha" : "1.21.4",
+    "should" : "4.0.4"
   },
   "main": "index",
   "scripts" : {"test" : "node_modules/mocha/bin/mocha -R spec"},
-  "engines" : { "node" : ">=0.4.0" }
+  "engines" : { "node" : ">=0.8.0" }
 }
-
